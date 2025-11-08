@@ -1,8 +1,10 @@
 #include<stdio.h>
 #include<string.h>
 
-void xor(){
-
+void xor(char* temp, char* divisor, int len_divisor, int start){
+    for(int i =0; i<len_divisor; i++){
+        temp[start+i] = (temp[start+i] == divisor[i]) ? '0' : '1';
+    }
 }
 
 
@@ -29,4 +31,7 @@ void compute_crc(char* data, char* divisor, char* remainder){
             xor(temp, divisor, len_divisor,i);
         }
     }
+
+    strncpy(remainder, &temp[n- (len_divisor-1)], len_divisor-1);
+    remainder[len_divisor - 1] = '\0';
 }
