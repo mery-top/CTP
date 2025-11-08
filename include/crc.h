@@ -1,3 +1,5 @@
 #pragma once
 
-void crc();
+void compute_crc(char* data, char* divisor, char* remainder);
+
+void xor(char* temp, char* divisor, int len_divisor, int start);
