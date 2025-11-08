@@ -1,3 +1,3 @@
 #pragma once
 
-void setup_termios();
+int setup_termios(char* port_name);
