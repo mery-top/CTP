@@ -28,6 +28,7 @@ int dreceiver(){
 
     if(received_crc == f.crc){
         printf("No Error in received data");
+        printf("Sending ACK For Received Data\n");
         send_ack(fd, f.seq_no, 1);
     }else{
         send_ack(fd, f.seq_no, 0);
