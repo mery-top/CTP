@@ -14,6 +14,7 @@ int dreceiver(){
     int fd = setup_termios("/dev/ttys007");
     frame_t f;
 
+    printf("Waiting for data...\n");
     receive_frame(fd, &f);
 
     //compute crc again and check
