@@ -6,9 +6,9 @@
 void send_frame(int fd, frame_t *f){
     ssize_t bytes_written = write(fd, f, sizeof(*f));
     if(bytes_written > 0){
-        printf("Data sent successfully!");
+        printf("Sender: Data sent successfully!\n");
     }else{
-        printf("Error Sending data");
+        printf("Sender: Error Sending data\n");
     }
 }
 
@@ -19,12 +19,12 @@ int receive_frame(int fd, frame_t *f){
         if(byte == 0xAA){
             f->preamble = byte;
             read(fd, (uint8_t*)f+1, sizeof(*f)-1);
-            printf("File Read Successfully\n");
+            printf("Receiver: Message Read Successfully\n");
             return 1;
         }
     }
 
-    printf("Error Reading file");
+    printf("Receiver: Error Reading file\n");
     return 0;
 }
 
