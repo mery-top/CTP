@@ -21,7 +21,7 @@ void compute_crc(char* data, char* divisor, char* remainder){
 
     //append n-1 divisor 0 bits to data
     for(int i =0; i<len_divisor-1; i++){
-        strcat(temp, '0');
+        strcat(temp, "0");
     }
 
     int n = strlen(temp);
