@@ -1,22 +1,18 @@
 CC = gcc
 SRC = main.c \
-src/ack/ack.c \
-src/hash_object.c \
-src/utils.c \
-src/commit.c \
-src/tree.c
+src/ack.c \
+src/comm.c \
+src/crc.c \
+src/termios.c 
 
 
 OUT = ctp
 
 $(OUT):$(SRC)
-	$(CC) $(SRC) -o $(OUT) \
-	-I$(OPENSSL_PREFIX)/include \
-	-L$(OPENSSL_PREFIX)/lib -lssl -lcrypto
+	$(CC) $(SRC) -o $(OUT) 
 
 run:
 	./$(OUT)
 
 clean:
 	rm -f $(OUT)
-	rm -r .gegit
