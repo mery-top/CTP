@@ -1,20 +1,31 @@
 CC = gcc
-SRC = main.c \
-datalink/dsender.c \
-datalink/dreceiver.c \
-src/ack.c \
+SRC_COMMON = src/ack.c \
 src/comm.c \
 src/crc.c \
 src/termios.c 
 
 
-OUT = sender
+SRC_SENDER = datalink/dsender.c main_dsender.c
+SRC_RECEIVER = datalink/dreceiver.c main_dreceiver.c
 
-$(OUT):$(SRC)
-	$(CC) $(SRC) -o $(OUT) 
 
-run:
-	./$(OUT)
+SENDER_OUT = sender
+RECEIVER_OUT = receiver
+
+all: $(SENDER_OUT) $(RECEIVER_OUT)
+
+$(SENDER_OUT):$(SRC_SENDER) $(SRC_COMMON)
+	$(CC) $(SRC_SENDER) $(SRC_COMMON) -o $(SENDER_OUT) 
+
+$(RECEIVER_OUT):$(SRC_RECEIVER) $(SRC_COMMON)
+	$(CC) $(SRC_RECEIVER) $(SRC_COMMON) -o $(RECEIVER_OUT) 
+
+
+run-sender:
+	./$(SENDER_OUT)
+
+run-receiver:
+	./$(RECEIVER_OUT)
 
 clean:
-	rm -f $(OUT)
+	rm -f $(RECEIVER_OUT) $(SENDER_OUT)
