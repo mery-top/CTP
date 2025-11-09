@@ -10,7 +10,7 @@
 #include <stdlib.h> 
 
 int dsender(){
-    int fd = setup_termios("/dev/ttys006");
+    int fd = setup_termios("/tmp/sender");
 
     uint16_t seq_no = 1;
     frame_t f;

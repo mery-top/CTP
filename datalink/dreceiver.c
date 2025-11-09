@@ -11,7 +11,7 @@
 
 int dreceiver(){
 
-    int fd = setup_termios("/dev/ttys007");
+    int fd = setup_termios("/tmp/receiver");
     frame_t f;
 
     printf("Waiting for data...\n");
