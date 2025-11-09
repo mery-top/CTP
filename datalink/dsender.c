@@ -53,27 +53,6 @@ int dsender(){
 On the receiver side,
 do crc on the transmitted data and reaminder should be zero beacuse tranmitted should be exactly divided 
 by the divisor now
-
-char recv_remainder[32];
-compute_crc(transmitted, divisor, recv_remainder);
-
-printf("Receiver recomputed remainder: %s\n", recv_remainder);
-
-// Check if all bits in remainder are zero
-int error = 0;
-for (int i = 0; i < strlen(recv_remainder); i++) {
-    if (recv_remainder[i] != '0') {
-        error = 1;
-        break;
-    }
-}
-
-if (error)
-    printf("❌ Error detected in transmission\n");
-else
-    printf("✅ No error detected (CRC check passed)\n");
-
-
 */
 
 
