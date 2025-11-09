@@ -19,7 +19,7 @@ int receive_frame(int fd, frame_t *f){
         if(byte == 0xAA){
             f->preamble = byte;
             read(fd, (uint8_t*)f+1, sizeof(*f)-1);
-            printf("File Read Successfully");
+            printf("File Read Successfully\n");
             return 1;
         }
     }
