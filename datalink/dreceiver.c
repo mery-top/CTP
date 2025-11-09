@@ -15,6 +15,7 @@ int dreceiver(){
     frame_t f;
 
     printf("Waiting for data...\n");
+    
     receive_frame(fd, &f);
 
     //compute crc again and check
@@ -27,7 +28,9 @@ int dreceiver(){
 
     if(received_crc == f.crc){
         printf("No Error in received data");
+        send_ack(fd, f.seq_no, 1);
     }else{
+        send_ack(fd, f.seq_no, 0);
         printf("Error in Received Data");
     }
 
